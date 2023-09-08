@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Page Creation</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="profile">
+        <div class="image">
+            <img src="mikes-pic.jpeg" alt="" data-testid="slackDisplayImage">
+        </div>
+        <div class="details">
+            <hr>
+            <div class="slack-name" >
+                <strong>Name : </strong> <span class="num" ata-testid="slackUserName"> Michael Ziboh</span>
+            </div>
+            <div class="slack-name"  data-testid="currentDayOfTheWeek">
+                <strong>Date : </strong> <span class="num" id="date"> </span>
+            </div>
+            <div class="slack-name" data-testid="currentUTCTime">
+                <strong>Time : </strong><span class="num" id="time"> </span>
+            </div>
+            <div class="slack-name" data-testid="myTrack">
+                <strong>Track: </strong><span class="num" id="nigeria-time">Frontend </span>
+            </div>
+            <div class="slack-name" data-testid=“githubURL”>
+                <strong>GitHub URL:</strong> <a href="#
+                " class="num" id="nigeria-time">Frontend </a>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+
+function updateDateTimeInNigeria() {
+            const nigeriaDateElement = document.getElementById("date");
+            const nigeriaTimeElement = document.getElementById("time");
+            const currentTime = new Date(new Date().toLocaleString("en-US", { timeZone: "Africa/Lagos" }));
+            const nigeriaTime = `${currentTime.getHours().toString().padStart(2, "0")}:${currentTime.getMinutes().toString().padStart(2, "0")}:${currentTime.getSeconds().toString().padStart(2, "0")}.${currentTime.getMilliseconds().toString().padStart(3, "0")}`;
+            const nigeriaDate = `${(currentTime.getMonth() + 1).toString().padStart(2, "0")}/${currentTime.getDate().toString().padStart(2, "0")}/${currentTime.getFullYear()}`;
+            nigeriaDateElement.textContent = nigeriaDate;
+            nigeriaTimeElement.textContent = nigeriaTime;
+        }
+
+        // Update the date and time initially and then refresh them every millisecond
+        updateDateTimeInNigeria();
+        setInterval(updateDateTimeInNigeria, 1);
+    </script>
+</body>
+</html>
