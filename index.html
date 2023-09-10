@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="profile">
-        <div class="image"data-testid="slackDisplayImage">
+        <div class="image" data-testid="slackDisplayImage">
             <img src="Screenshot_2023-09-09_at_15.59.59-removebg-preview (1).png" alt="Michael Ziboh">
         </div>
 
@@ -34,20 +34,27 @@
         
     </div>
     <script>
-
-function updateDateTimeInNigeria() {
-            const nigeriaDateElement = document.getElementById("date");
-            const nigeriaTimeElement = document.getElementById("time");
-            const currentTime = new Date(new Date().toLocaleString("en-US", { timeZone: "Africa/Lagos" }));
-            const nigeriaTime = `${currentTime.getHours().toString().padStart(2, "0")}:${currentTime.getMinutes().toString().padStart(2, "0")}:${currentTime.getSeconds().toString().padStart(2, "0")}.${currentTime.getMilliseconds().toString().padStart(3, "0")}`;
-            const nigeriaDate = `${(currentTime.getMonth() + 1).toString().padStart(2, "0")}/${currentTime.getDate().toString().padStart(2, "0")}/${currentTime.getFullYear()}`;
-            nigeriaDateElement.textContent = nigeriaDate;
-            nigeriaTimeElement.textContent = nigeriaTime;
+        // Function to update the current day of the week in words
+        function updateDayInWords() {
+            const dayWordsElement = document.getElementById("date");
+            const currentDate = new Date();
+            const options = { weekday: 'long' };
+            const dayInWords = currentDate.toLocaleDateString('en-US', options);
+            dayWordsElement.textContent = dayInWords;
         }
 
-        // Update the date and time initially and then refresh them every millisecond
-        updateDateTimeInNigeria();
-        setInterval(updateDateTimeInNigeria, 1);
+        // Function to update the current UTC time in milliseconds
+        function updateUTCTimeInMilliseconds() {
+            const utcTimeMSElement = document.getElementById("time");
+            const currentUTCTimeMS = new Date().getTime();
+            utcTimeMSElement.textContent = currentUTCTimeMS;
+        }
+
+        // Update the day in words and UTC time in milliseconds initially and then refresh them every second
+        updateDayInWords();
+        updateUTCTimeInMilliseconds();
+        setInterval(updateDayInWords, 1000);
+        setInterval(updateUTCTimeInMilliseconds, 1000);
     </script>
 </body>
 </html>
