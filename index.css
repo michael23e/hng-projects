@@ -13,7 +13,8 @@ body{
     justify-content: center;
 }
 .profile{
-    width: 300px;
+    max-width: 300px;
+    width: 90%;
     /* background-color: #fdfdfd; */
     /* border: 1px solid #F7CF53; */
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;}
